@@ -1,15 +1,15 @@
 // Creates the networks virtual network, the subnets and associated NSG, with a special section for AzureFirewallSubnet
-resource "azurecaf_naming_convention" "caf_name_vnet" {  
-  name          = var.networking_object.vnet.name
-  prefix        = var.prefix != "" ? var.prefix : null
-  postfix       = var.postfix != "" ? var.postfix : null
-  max_length    = var.max_length != "" ? var.max_length : null
-  resource_type = "azurerm_virtual_network"
-  convention    = var.convention
+module "caf_name_vnet" {
+  source  = "aztfmod/caf-naming/azurerm"
+  version = "~> 0.1.0"
+  
+  name    = var.networking_object.vnet.name
+  type    = "vnet"
+  convention  = var.convention
 }
 
 resource "azurerm_virtual_network" "vnet" {
-  name                  = azurecaf_naming_convention.caf_name_vnet.result
+  name                  = module.caf_name_vnet.vnet
   location              = var.location
   resource_group_name   = var.resource_group_name
   address_space         = var.networking_object.vnet.address_space
@@ -17,12 +17,12 @@ resource "azurerm_virtual_network" "vnet" {
 
   dns_servers           = lookup(var.networking_object.vnet, "dns", null)
 
-  dynamic "ddos_protection_plan" {
-    for_each = var.ddos_id != "" ? [1] : []
+   dynamic "ddos_protection_plan" {
+    for_each = lookup(var.networking_object.vnet, "enable_ddos_std", false) == true ? [1] : []
     
     content {
-      id     = var.ddos_id
-      enable = true
+      id     = var.networking_object.vnet.ddos_id
+      enable = var.networking_object.vnet.enable_ddos_std
     }
   }
 }

@@ -103,10 +103,10 @@ For each subnet, create an object that contain the following fields (see example
 | input | type | optional | comment |
 | -- | -- | -- | -- |
 | name | object | mandatory | name of the virtual subnet |
+| name_name | object | mandatory | name of the nsg ruleset |
 | cidr | object | mandatory | CIDR block for the virtual subnet |
 | service_endpoints | object | mandatory | service endpoints for the virtual subnet |
-| nsg_inbound | object | optional | network security groups settings - a NSG is always created for each subnet - this section will tune the NSG entries for inbound flows. |
-| nsg_outbound | object | optional | network security groups settings - a NSG is always created for each subnet - this section will tune the NSG entries for outbound flows. |
+| nsg  | object | optional | network security groups settings - a NSG is always created for each subnet - this section will tune the NSG entries for inbound and outbound flows. |
 | delegation | object | optional | defines a subnet delegation feature. takes an object as described in the following example. |
 
 The following sections are optional:

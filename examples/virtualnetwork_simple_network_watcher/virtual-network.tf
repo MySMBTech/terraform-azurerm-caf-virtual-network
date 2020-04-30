@@ -41,7 +41,7 @@ module "vnet_test" {
   source  = "../.."
     
   convention                        = local.convention
-  virtual_network_rg                = module.rg_test.names.test
+  resource_group_name               = module.rg_test.names.test
   prefix                            = local.prefix
   location                          = local.location
   networking_object                 = local.vnet_config
