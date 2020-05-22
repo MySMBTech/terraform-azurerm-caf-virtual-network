@@ -36,12 +36,12 @@ locals {
         subnets = {
             subnet0                 = {
                 name                = "Cycle_Controller"
-                cidr                = "10.101.4.0/25" 
+                cidr                = ["10.101.4.0/25"] 
                 nsg_name            = "Cycle_Controller_nsg"     
             }
             subnet1                 = {
                 name                = "Active_Directory"
-                cidr                = "10.101.4.128/27"
+                cidr                = ["10.101.4.128/27"]
                 nsg_name            = "Active_Directory_nsg"
                 nsg                 = [
                      {
@@ -70,7 +70,7 @@ locals {
             }
             subnet2                 = {
                 name                = "SQL_Servers"
-                cidr                = "10.101.4.160/27"
+                cidr                = ["10.101.4.160/27"]
                 # service_endpoints   = []
                 nsg_name            = "SQL_Servers_nsg"
                 nsg                 = [
@@ -89,7 +89,7 @@ locals {
             }
             subnet3                 = {
                 name                = "Network_Monitoring"
-                cidr                = "10.101.4.192/27"
+                cidr                = ["10.101.4.192/27"]
                 service_endpoints   = ["Microsoft.Sql"]
                 nsg_name            = "Network_Monitoring_nsg"
       

@@ -1,5 +1,10 @@
 provider "azurerm" {
-   features {}
+  version = "2.8.0"
+  features {}
+}
+
+provider "azurecaf" {
+
 }
 
 module "rg_test" {

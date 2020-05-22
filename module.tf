@@ -1,15 +1,21 @@
 // Creates the networks virtual network, the subnets and associated NSG, with a special section for AzureFirewallSubnet
-module "caf_name_vnet" {
-  source  = "aztfmod/caf-naming/azurerm"
-  version = "~> 0.1.0"
+# module "caf_name_vnet" {
+#   source  = "aztfmod/caf-naming/azurerm"
+#   version = "~> 0.1.0"
   
-  name    = var.networking_object.vnet.name
-  type    = "vnet"
-  convention  = var.convention
+#   name    = var.networking_object.vnet.name
+#   type    = "vnet"
+#   convention  = var.convention
+# }
+
+resource "azurecaf_naming_convention" "caf_name_vnet" {  
+  name             =  var.networking_object.vnet.name
+  resource_type    = "vnet"
+  convention       = var.convention
 }
 
 resource "azurerm_virtual_network" "vnet" {
-  name                  = module.caf_name_vnet.vnet
+  name                  = azurecaf_naming_convention.caf_name_vnet.name
   location              = var.location
   resource_group_name   = var.resource_group_name
   address_space         = var.networking_object.vnet.address_space

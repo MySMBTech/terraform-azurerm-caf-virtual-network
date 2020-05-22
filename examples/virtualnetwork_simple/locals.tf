@@ -1,7 +1,7 @@
 locals {
     convention = "cafclassic"
     name = "caftest-vnet"
-    name_la = "caftestlavalid"
+    name_la = "aztfmodcaftestlavalid"
     name_diags = "caftestdiags"
     location = "southeastasia"
     prefix = ""
@@ -34,14 +34,14 @@ locals {
         specialsubnets     = {
             AzureFirewallSubnet     = {
                 name                = "AzureFirewallSubnet"
-                cidr                = "10.0.0.0/26"
+                cidr                = ["10.0.0.0/26"]
                 service_endpoints   = []
             }
             }
         subnets = {
             subnet1                 = {
                 name                = "Network_Monitoring"
-                cidr                = "10.0.0.64/26"
+                cidr                = ["10.0.0.64/26"]
                 service_endpoints   = []
                 nsg_name            = "network_monitoring_nsg"
                 nsg                 = [

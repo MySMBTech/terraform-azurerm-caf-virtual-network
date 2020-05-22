@@ -1,3 +1,13 @@
+## v3.0 (May 2020)
+
+IMPROVEMENTS:
+
+* **improvement:** Remove deprecated address_prefix variable for the subnet in favour of address_prefixes (requires azurem 2.8.0 and above)
+* **improvement:** Added custom nsg name option
+* **improvement:** Added additonal configuration options for nsg
+
+Introduces breaking changes in the input variable
+
 ## v2.0 (March 2020)
 
 IMPROVEMENTS:

@@ -1,5 +1,10 @@
 provider "azurerm" {
-   features {}
+  version = "2.8.0"
+  features {}
+}
+
+provider "azurecaf" {
+  
 }
 
 resource "azurerm_resource_group" "rg_test" {
@@ -45,7 +50,7 @@ module "vnet_test" {
   source  = "../.."
     
   convention                        = local.convention
-  virtual_network_rg                = azurerm_resource_group.rg_test.name
+  resource_group_name                = azurerm_resource_group.rg_test.name
   prefix                            = local.prefix
   location                          = local.location
   networking_object                 = local.vnet_config
