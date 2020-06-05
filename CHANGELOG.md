@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## v3.0 (May 2020)
 
 IMPROVEMENTS:
@@ -7,6 +8,14 @@ IMPROVEMENTS:
 * **improvement:** Added additonal configuration options for nsg
 
 Introduces breaking changes in the input variable
+=======
+## v2.0.1 (June 2020)
+
+IMPROVEMENTS:
+
+* **bug fix:** subnet output now outputs subnet and special subnet ([20] (https://github.com/aztfmod/terraform-azurerm-caf-virtual-network/issues/20))
+
+>>>>>>> master
 
 ## v2.0 (March 2020)
 
